@@ -1,21 +1,17 @@
 import java.awt.*;
 
-public class Car {
+public abstract class Car {
+    private int nrDoors; // Number of doors on the car
+    private double enginePower; // Engine power of the car
+    private double currentSpeed; // The current speed of the car
+    private Color color; // Color of the car
+    private String modelName; // The car model name
 
-    public final static double trimFactor = 1.25;
-    public boolean turboOn;
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-
-    public Car Saab95() {
-        nrDoors = 2;
-        color = Color.red;
-        enginePower = 125;
-        turboOn = false;
-        modelName = "Saab95";
+    protected Car (int nrDoors, double enginePower, Color color, String modelName) {
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
         stopEngine();
     }
 
@@ -46,25 +42,13 @@ public class Car {
             currentSpeed = 0;
         }
 
-    public void setTurboOn() {
-            turboOn = true;
-        }
+    protected abstract double speedFactor();
 
-    public void setTurboOff() {
-            turboOn = false;
-        }
-
-    public double speedFactor() {
-        double turbo = 1;
-        if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
-    }
-
-    public void incrementSpeed(double amount) {
+    private void incrementSpeed(double amount) {
             currentSpeed = getCurrentSpeed() + speedFactor() * amount;
         }
 
-    public void decrementSpeed(double amount) {
+    private void decrementSpeed(double amount) {
             currentSpeed = getCurrentSpeed() - speedFactor() * amount;
         }
 
@@ -77,10 +61,4 @@ public class Car {
     public void brake(double amount) {
             decrementSpeed(amount);
         }
-}
-
-Car Saab95= new Car();
-Car Volvo240=new Car();
-
-void main() {
 }
