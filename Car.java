@@ -6,12 +6,18 @@ public abstract class Car {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
+    private double x;
+    private double y;
+    private String direction;
 
     protected Car (int nrDoors, double enginePower, Color color, String modelName) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
+        this.x = 0;
+        this.y = 0;
+        this.direction = "up";
         stopEngine();
     }
 
@@ -29,6 +35,12 @@ public abstract class Car {
     public Color getColor() {
             return color;
         }
+
+    public double getX() {return x;}
+
+    public double getY() {return y;}
+
+    public String getDirection() {return direction;}
 
     public void setColor(Color clr) {
             color = clr;
