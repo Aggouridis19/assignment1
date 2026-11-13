@@ -95,6 +95,24 @@ public class CarTest {
         boolean result = volvo240.getCurrentSpeed() >= 0;
         reportResult ("The brake never goes below zero", result);
     }
+    private static void testGasNeverDecreasesSpeed()
+    {
+        Volvo240 volvo240 = new Volvo240();
+        volvo240.startEngine();
+        double speedBefore = volvo240.getCurrentSpeed();
+        volvo240.gas(0.5);
+        boolean result = volvo240.getCurrentSpeed() >= speedBefore;
+        reportResult("Gas never decreases speed", result);
+    }
+    private static void testBrakeNeverIncreasesSpeed()
+    {
+        Volvo240 volvo240 = new Volvo240();
+        volvo240.startEngine();
+        double speedBefore = volvo240.getCurrentSpeed();
+        volvo240.brake(0.5);
+        boolean result = volvo240.getCurrentSpeed() <= speedBefore;
+        reportResult("Brake never decreases speed", result);
+    }
 
     static void main() {
         testTurbo();
@@ -108,5 +126,7 @@ public class CarTest {
         testGas();
         SpeedNeverAboveEnginePower();
         SpeedNeverBelowZero();
+        testGasNeverDecreasesSpeed();
+        testBrakeNeverIncreasesSpeed();
     }
 }
