@@ -118,5 +118,6 @@ public class CarTest {
         testGas();
         SpeedNeverAboveEnginePower();
         SpeedNeverBelowZero();
+        testBrake();
     }
 }
