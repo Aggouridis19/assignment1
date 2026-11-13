@@ -73,6 +73,16 @@ public class CarTest {
         boolean result = volvo240.getCurrentSpeed() == 0.1;
         reportResult("The speed (gas) ignores values more than 1", result);
     }
+    private static void testBrake()
+    {
+        Volvo240 volvo240 = new Volvo240();
+        volvo240.startEngine();
+        volvo240.gas(1);
+        double SaveSpeed =  volvo240.getCurrentSpeed();
+        volvo240.brake(5);
+        boolean result = volvo240.getCurrentSpeed() == SaveSpeed;
+        reportResult("The speed (brake) ignores values more than 1", result);
+    }
     private static void SpeedNeverAboveEnginePower()
     {
         Volvo240 volvo240 = new Volvo240();
