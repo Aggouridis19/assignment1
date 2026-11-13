@@ -65,6 +65,15 @@ public class CarTest {
         boolean result = volvo240.getDirection().equals("right");
         reportResult("The car is moving to the right", result);
     }
+    private static void testGas()
+    {
+        Volvo240 volvo240 = new Volvo240();
+        volvo240.startEngine();
+        volvo240.gas(5);
+        boolean result = volvo240.getCurrentSpeed() == 0.1;
+        reportResult("The speed (gas) ignores values more than 1", result);
+    }
+
 
     static void main() {
         testTurbo();
@@ -75,6 +84,7 @@ public class CarTest {
         testVolvoMove();
         testTurnLeft();
         testTurnRight();
+        testGas();
     }
 }
 

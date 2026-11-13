@@ -71,14 +71,20 @@ public abstract class Car implements Movable {
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 
-    // TODO fix this method according to assignment instructions
     public void gas(double amount) {
-        incrementSpeed(amount);
+        if (amount >=0 && amount <=1)
+        {
+            incrementSpeed(amount);
+        }
+
     }
 
-    // TODO fix this method according to assignment instructions
     public void brake(double amount) {
-        decrementSpeed(amount);
+        if (amount >=0 && amount <=1)
+        {
+            decrementSpeed(amount);
+        }
+
     }
 
     @Override
