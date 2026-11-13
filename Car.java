@@ -83,55 +83,42 @@ public abstract class Car implements Movable {
 
     @Override
     public void move() {
-        switch (direction) {
-            case "up":
-                y += currentSpeed;
-                break;
-            case "down":
-                y -= currentSpeed;
-                break;
-            case "left":
-                x -= currentSpeed;
-                break;
-            case "right":
-                x += currentSpeed;
-                break;
+        if ("up".equals(direction)) {
+            y += currentSpeed;
+        } else if ("down".equals(direction)) {
+            y -= currentSpeed;
+        } else if ("left".equals(direction)) {
+            x -= currentSpeed;
+        } else if ("right".equals(direction)) {
+            x += currentSpeed;
         }
     }
 
     @Override
     public void turnLeft() {
-        switch (direction) {
-            case "up":
-                direction = "left";
-                break;
-            case "down":
-                direction = "right";
-                break;
-            case "left":
-                direction = "down";
-                break;
-            case "right":
-                direction = "up";
-                break;
+        if ("up".equals(direction)) {
+            direction = "left";
+        } else if ("down".equals(direction)) {
+            direction = "right";
+        } else if ("left".equals(direction)) {
+            direction = "down";
+        } else if ("right".equals(direction)) {
+            direction = "up";
         }
     }
 
     @Override
     public void turnRight() {
-        switch (direction) {
-            case "up":
-                direction = "right";
-                break;
-            case "down":
-                direction = "left";
-                break;
-            case "left":
-                direction = "up";
-                break;
-            case "right":
-                direction = "down";
-                break;
+        if ("up".equals(direction)) {
+            direction = "right";
+        } else if ("down".equals(direction)) {
+            direction = "left";
+        } else if ("left".equals(direction)) {
+            direction = "up";
+        } else if ("right".equals(direction)) {
+            direction = "down";
         }
     }
+
+
 }
