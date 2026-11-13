@@ -73,7 +73,28 @@ public class CarTest {
         boolean result = volvo240.getCurrentSpeed() == 0.1;
         reportResult("The speed (gas) ignores values more than 1", result);
     }
-
+    private static void SpeedNeverAboveEnginePower()
+    {
+        Volvo240 volvo240 = new Volvo240();
+        volvo240.startEngine();
+        for (int i=0; i<200; i++)
+        {
+            volvo240.gas(1);
+        }
+        boolean result = volvo240.getCurrentSpeed() <= volvo240.getEnginePower();
+        reportResult("The speed (gas) never goes above engine power", result);
+    }
+    private static void SpeedNeverBelowZero()
+    {
+        Volvo240 volvo240 = new Volvo240();
+        volvo240.startEngine();
+        for (int i=0; i<200; i++)
+        {
+            volvo240.brake(1);
+        }
+        boolean result = volvo240.getCurrentSpeed() >= 0;
+        reportResult ("The brake never goes below zero", result);
+    }
 
     static void main() {
         testTurbo();
@@ -85,7 +106,7 @@ public class CarTest {
         testTurnLeft();
         testTurnRight();
         testGas();
+        SpeedNeverAboveEnginePower();
+        SpeedNeverBelowZero();
     }
 }
-
-
