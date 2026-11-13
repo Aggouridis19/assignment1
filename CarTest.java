@@ -41,12 +41,41 @@ public class CarTest {
         boolean result = volvo240.getEnginePower() == 100;
         reportResult("Volvo240 has 100 enginePower", result);
     }
+
+    private static void testVolvoMove()
+    {
+        Volvo240 volvo240 = new Volvo240();
+        volvo240.startEngine();
+        volvo240.move();
+        boolean result = volvo240.getX() == 0
+        && volvo240.getY() == 0.1;
+        reportResult("The car is moving", result);
+    }
+    private static void testTurnLeft()
+    {
+        Volvo240 volvo240 = new Volvo240();
+        volvo240.turnLeft();
+        boolean result = volvo240.getDirection().equals("left");
+        reportResult("The car is moving to the left", result);
+    }
+    private static void testTurnRight()
+    {
+        Volvo240 volvo240 = new Volvo240();
+        volvo240.turnRight();
+        boolean result = volvo240.getDirection().equals("right");
+        reportResult("The car is moving to the right", result);
+    }
+
     static void main() {
         testTurbo();
         testVolvoDoors();
         testSaabdoors();
         testVolvoColour();
         testEnginePower();
+        testVolvoMove();
+        testTurnLeft();
+        testTurnRight();
     }
 }
+
 
